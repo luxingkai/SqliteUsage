@@ -7,15 +7,25 @@
 //
 
 #import "ViewController.h"
+#import <sqlite3.h>
 
 @interface ViewController ()
 
 @end
 
-@implementation ViewController
+@implementation ViewController {
+    
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    
+    
+    
     // Do any additional setup after loading the view.
 }
 
