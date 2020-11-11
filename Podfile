@@ -5,8 +5,8 @@ target 'SqliteUsage' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-   pod 'FMDB', '~> 2.7.5'
-
+   pod 'FMDB'
+   pod 'Realm'
   # Pods for SqliteUsage
 
   target 'SqliteUsageTests' do

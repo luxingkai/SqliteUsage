@@ -3,12 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1107EC3B255BB0D7002A6A85 /* sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 1107EC3A255BB0D7002A6A85 /* sqlite */; };
+		1107EC42255BB2F7002A6A85 /* Sqlite3.m in Sources */ = {isa = PBXBuildFile; fileRef = 1107EC41255BB2F7002A6A85 /* Sqlite3.m */; };
+		1107EC45255BB309002A6A85 /* FMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 1107EC44255BB309002A6A85 /* FMDB.m */; };
+		1107EC48255BB317002A6A85 /* Realm.m in Sources */ = {isa = PBXBuildFile; fileRef = 1107EC47255BB317002A6A85 /* Realm.m */; };
+		1107EC4B255BB322002A6A85 /* CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1107EC4A255BB322002A6A85 /* CoreData.m */; };
 		118327192423212400B559FB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 118327182423212400B559FB /* AppDelegate.m */; };
-		1183271F2423212400B559FB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1183271E2423212400B559FB /* ViewController.m */; };
 		118327222423212400B559FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 118327202423212400B559FB /* Main.storyboard */; };
 		118327242423212700B559FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 118327232423212700B559FB /* Assets.xcassets */; };
 		118327272423212700B559FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 118327252423212700B559FB /* LaunchScreen.storyboard */; };
@@ -39,11 +43,18 @@
 
 /* Begin PBXFileReference section */
 		0D440107E8EDCF69D978674E /* Pods-SqliteUsage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SqliteUsage.release.xcconfig"; path = "Target Support Files/Pods-SqliteUsage/Pods-SqliteUsage.release.xcconfig"; sourceTree = "<group>"; };
+		1107EC3A255BB0D7002A6A85 /* sqlite */ = {isa = PBXFileReference; lastKnownFileType = text; path = sqlite; sourceTree = "<group>"; };
+		1107EC40255BB2F7002A6A85 /* Sqlite3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sqlite3.h; sourceTree = "<group>"; };
+		1107EC41255BB2F7002A6A85 /* Sqlite3.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sqlite3.m; sourceTree = "<group>"; };
+		1107EC43255BB309002A6A85 /* FMDB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		1107EC44255BB309002A6A85 /* FMDB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMDB.m; sourceTree = "<group>"; };
+		1107EC46255BB317002A6A85 /* Realm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Realm.h; sourceTree = "<group>"; };
+		1107EC47255BB317002A6A85 /* Realm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Realm.m; sourceTree = "<group>"; };
+		1107EC49255BB322002A6A85 /* CoreData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreData.h; sourceTree = "<group>"; };
+		1107EC4A255BB322002A6A85 /* CoreData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreData.m; sourceTree = "<group>"; };
 		118327142423212400B559FB /* SqliteUsage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SqliteUsage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		118327172423212400B559FB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		118327182423212400B559FB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1183271D2423212400B559FB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1183271E2423212400B559FB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		118327212423212400B559FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		118327232423212700B559FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		118327262423212700B559FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -93,6 +104,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1107EC3C255BB2A3002A6A85 /* sqlite3 */ = {
+			isa = PBXGroup;
+			children = (
+				1107EC40255BB2F7002A6A85 /* Sqlite3.h */,
+				1107EC41255BB2F7002A6A85 /* Sqlite3.m */,
+			);
+			path = sqlite3;
+			sourceTree = "<group>";
+		};
+		1107EC3D255BB2AF002A6A85 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				1107EC43255BB309002A6A85 /* FMDB.h */,
+				1107EC44255BB309002A6A85 /* FMDB.m */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
+		1107EC3E255BB2B5002A6A85 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				1107EC46255BB317002A6A85 /* Realm.h */,
+				1107EC47255BB317002A6A85 /* Realm.m */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		1107EC3F255BB2C4002A6A85 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				1107EC49255BB322002A6A85 /* CoreData.h */,
+				1107EC4A255BB322002A6A85 /* CoreData.m */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		1183270B2423212400B559FB = {
 			isa = PBXGroup;
 			children = (
@@ -118,15 +165,18 @@
 		118327162423212400B559FB /* SqliteUsage */ = {
 			isa = PBXGroup;
 			children = (
+				1107EC3F255BB2C4002A6A85 /* CoreData */,
+				1107EC3E255BB2B5002A6A85 /* Realm */,
+				1107EC3D255BB2AF002A6A85 /* FMDB */,
+				1107EC3C255BB2A3002A6A85 /* sqlite3 */,
 				118327172423212400B559FB /* AppDelegate.h */,
 				118327182423212400B559FB /* AppDelegate.m */,
-				1183271D2423212400B559FB /* ViewController.h */,
-				1183271E2423212400B559FB /* ViewController.m */,
 				118327202423212400B559FB /* Main.storyboard */,
 				118327232423212700B559FB /* Assets.xcassets */,
 				118327252423212700B559FB /* LaunchScreen.storyboard */,
 				118327282423212700B559FB /* Info.plist */,
 				118327292423212700B559FB /* main.m */,
+				1107EC3A255BB0D7002A6A85 /* sqlite */,
 			);
 			path = SqliteUsage;
 			sourceTree = "<group>";
@@ -159,7 +209,6 @@
 				DC1B2C528A0A72DE8E054184 /* Pods-SqliteUsageTests.debug.xcconfig */,
 				A72AA292AE6065E76B4F13E0 /* Pods-SqliteUsageTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -284,6 +333,7 @@
 				118327272423212700B559FB /* LaunchScreen.storyboard in Resources */,
 				118327242423212700B559FB /* Assets.xcassets in Resources */,
 				118327222423212400B559FB /* Main.storyboard in Resources */,
+				1107EC3B255BB0D7002A6A85 /* sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,9 +461,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1183271F2423212400B559FB /* ViewController.m in Sources */,
 				118327192423212400B559FB /* AppDelegate.m in Sources */,
 				1183272A2423212700B559FB /* main.m in Sources */,
+				1107EC4B255BB322002A6A85 /* CoreData.m in Sources */,
+				1107EC48255BB317002A6A85 /* Realm.m in Sources */,
+				1107EC45255BB309002A6A85 /* FMDB.m in Sources */,
+				1107EC42255BB2F7002A6A85 /* Sqlite3.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
