@@ -12,6 +12,7 @@
 		1107EC45255BB309002A6A85 /* FMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 1107EC44255BB309002A6A85 /* FMDB.m */; };
 		1107EC48255BB317002A6A85 /* Realm.m in Sources */ = {isa = PBXBuildFile; fileRef = 1107EC47255BB317002A6A85 /* Realm.m */; };
 		1107EC4B255BB322002A6A85 /* CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1107EC4A255BB322002A6A85 /* CoreData.m */; };
+		118043B4255D173D002E2582 /* FMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 118043B3255D173D002E2582 /* FMModel.m */; };
 		118327192423212400B559FB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 118327182423212400B559FB /* AppDelegate.m */; };
 		118327222423212400B559FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 118327202423212400B559FB /* Main.storyboard */; };
 		118327242423212700B559FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 118327232423212700B559FB /* Assets.xcassets */; };
@@ -52,6 +53,8 @@
 		1107EC47255BB317002A6A85 /* Realm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Realm.m; sourceTree = "<group>"; };
 		1107EC49255BB322002A6A85 /* CoreData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreData.h; sourceTree = "<group>"; };
 		1107EC4A255BB322002A6A85 /* CoreData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreData.m; sourceTree = "<group>"; };
+		118043B2255D173D002E2582 /* FMModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMModel.h; sourceTree = "<group>"; };
+		118043B3255D173D002E2582 /* FMModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMModel.m; sourceTree = "<group>"; };
 		118327142423212400B559FB /* SqliteUsage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SqliteUsage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		118327172423212400B559FB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		118327182423212400B559FB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -118,6 +121,8 @@
 			children = (
 				1107EC43255BB309002A6A85 /* FMDB.h */,
 				1107EC44255BB309002A6A85 /* FMDB.m */,
+				118043B2255D173D002E2582 /* FMModel.h */,
+				118043B3255D173D002E2582 /* FMModel.m */,
 			);
 			path = FMDB;
 			sourceTree = "<group>";
@@ -467,6 +472,7 @@
 				1107EC48255BB317002A6A85 /* Realm.m in Sources */,
 				1107EC45255BB309002A6A85 /* FMDB.m in Sources */,
 				1107EC42255BB2F7002A6A85 /* Sqlite3.m in Sources */,
+				118043B4255D173D002E2582 /* FMModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,6 +645,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 962BW6QCNQ;
 				INFOPLIST_FILE = SqliteUsage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -657,6 +664,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 962BW6QCNQ;
 				INFOPLIST_FILE = SqliteUsage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

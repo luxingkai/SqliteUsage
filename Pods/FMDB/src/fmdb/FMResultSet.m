@@ -129,6 +129,7 @@
 
 - (NSDictionary*)resultDictionary {
     
+    NSLog(@"%@",[_statement statement]);
     NSUInteger num_cols = (NSUInteger)sqlite3_data_count([_statement statement]);
     
     if (num_cols > 0) {
