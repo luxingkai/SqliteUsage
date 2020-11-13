@@ -2,23 +2,17 @@ PODS:
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
-  - Realm (10.1.2):
-    - Realm/Headers (= 10.1.2)
-  - Realm/Headers (10.1.2)
 
 DEPENDENCIES:
   - FMDB
-  - Realm
 
 SPEC REPOS:
   trunk:
     - FMDB
-    - Realm
 
 SPEC CHECKSUMS:
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  Realm: 031fdd4be7094d01b43af1a5e49766ab644bb800
 
-PODFILE CHECKSUM: f45c6eb4b4a04cc2cd3ef28fa80a7a0a513e750b
+PODFILE CHECKSUM: cfcfdf8a275cca428125ebe9c0855eab0f02e993
 
 COCOAPODS: 1.10.0

@@ -6,7 +6,6 @@ target 'SqliteUsage' do
   use_frameworks!
 
    pod 'FMDB'
-   pod 'Realm'
   # Pods for SqliteUsage
 
   target 'SqliteUsageTests' do
