@@ -15,6 +15,7 @@
  */
 
 #import "FMDB.h"
+#import "FMModel.h"
 #import "AppDelegate.h"
 
 @interface FMDB ()<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
@@ -44,21 +45,15 @@
 }
 
 - (void)fetchData {
-    
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    _database = delegate.database;
 
-    [_database open];
-    FMResultSet *resultSet = [_database executeQuery:@"SELECT * FROM PEOPLE"];
-    NSLog(@"%@",resultSet.columnNameToIndexMap);
-    NSLog(@"%d",resultSet.columnCount);
-    NSLog(@"%@",resultSet.resultDictionary);
+    FMDatabase *database = [[FMDatabase alloc] initWithPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingString:@"/sm.db"]];
+    [database open];
+    FMResultSet *resultSet = [database executeQuery:@"SELECT * FROM CARS"];
     while ([resultSet next]) {
-        NSLog(@"%d %@ %d",[resultSet intForColumn:@"id"],[resultSet stringForColumn:@"name"],
-              [resultSet intForColumn:@"age"]);
+        NSLog(@"%@", [resultSet stringForColumn:@"COLOR"]);
     }
 
-    [_database close];
+    FMDatabasePool *databasePool = [FMDatabasePool alloc] init;
 }
 
 

@@ -10,7 +10,6 @@
 
 
 @interface AppDelegate ()
-
 @end
 
 @implementation AppDelegate
@@ -33,66 +32,44 @@
 
 - (void)createDB {
     
-//    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
-    NSString *path = NSTemporaryDirectory();
-    NSLog(@"%@",path);
-        
-    self.database = [FMDatabase databaseWithPath:[path stringByAppendingString:@"/my.sqlite"]];
-    if (self.database) {
-        NSLog(@"创建数据库文件成功");
-    }else {
-        NSLog(@"创建数据库文件失败");
+    if (![self.database isOpen]) {
+        BOOL result = [self.database open];
+        NSLog(@"数据库打开 %@",result == YES ? @"成功" : @"失败");
     }
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingString:@"/sm.db"];
+    self.database = [FMDatabase databaseWithPath:path];
     
-    //创建表
     [self.database open];
-    BOOL createTable = [self.database executeUpdate:@"CREATE TABLE IF NOT EXISTS PEOPLE(id Integer primary key autoincrement, name text, age Integer)"];
-    if (createTable == NO) {
-        NSLog(@"创建表失败");
+    BOOL create = [self.database executeUpdate:@"CREATE TABLE IF NOT EXISTS CARS(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, COLOR TEXT)"];
+    if (create == YES) {
+        NSLog(@"创建数据库成功！");
+    }else {
+        NSLog(@"创建数据库失败");
     }
     [self.database close];
     
-//    //查询表
-//    [self.database open];
-//    FMResultSet *resultSet = [self.database executeQuery:@"SELECT * FROM PEOPLE"];
-//    while ([resultSet next]) {
-//        int ids = [resultSet intForColumn:@"id"];
-//        NSString *name = [resultSet stringForColumn:@"name"];
-//        NSLog(@"%d %@",ids,name);
-//    }
-//    [self.database close];
-//
+    [self.database open];
+    BOOL insert = [self.database executeUpdate:@"INSERT INTO CARS(ID, NAME, COLOR) VALUES(2, 'ROBO', 'colorful')"];
+    NSLog(@"数据库插入 %@", insert == YES ? @"成功" : @"失败");
+    [self.database close];
+    
+    [self.database open];
+    FMResultSet *resultSet = [self.database executeQuery:@"SELECT * FROM CARS where ID = 1"];
+    while ([resultSet next]) {
+        NSLog(@"%@",[resultSet stringForColumn:@"NAME"]);
+    }
 
-    [self.database open];
-    BOOL insertTable = [self.database executeStatements:@"INSERT INTO PEOPLE VALUES(6, 'anne', 88)"];
-    if (insertTable == YES) {
-        NSLog(@"数据插入成功");
-    }else {
-        NSLog(@"数据插入失败");
-    }
     [self.database close];
     
+    [self.database open];
+    BOOL update = [self.database executeUpdate:@"UPDATE CARS SET NAME = 'Bee' WHERE ID = 0"];
+    NSLog(@"数据库更新 %@", update == YES ? @"成功" : @"失败");
+    [self.database close];
     
-    
-//
-//    //修改数据
 //    [self.database open];
-//    BOOL updateResult = [self.database executeUpdate:@"update PEOPLE set name = 'kenel' where id = 1"];
-//    if (updateResult == NO) {
-//        NSLog(@"修改失败");
-//    }
+//    BOOL delete = [self.database executeUpdate:@"DELETE FROM CARS WHERE ID = 0"];
+//    NSLog(@"数据库删除 %@", delete == YES ? @"成功" : @"失败");
 //    [self.database close];
-//
-//    //删除数据
-//    [self.database open];
-//    BOOL deleteResult = [self.database executeUpdate:@"delete FROM PEOPLE where id = 1"];
-//    if (deleteResult == NO) {
-//        NSLog(@"删除数据");
-//    }
-//    [self.database close];
-    
-   
-    
     
     
 }
