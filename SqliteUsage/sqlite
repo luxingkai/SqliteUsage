@@ -1,7 +1,7 @@
  
 SQLite 存储数据类型
   
-存储类型                    描述
+存储类型                        描述
 NULL                       值是一个NULL值
 INTEGER                    值是一个带符号的整数
 REAL                       值是一个浮点数
@@ -58,6 +58,289 @@ REAL或INTEGER值。
 TEXT                                格式为YYYY-MM-DD HH:MM:SS.SSS
 REAL                                从公元前4714年11月24日格林尼治时间的正午开始算起的天数
 INTEGER                             从1970-01-01 00:00:00 UTC算起的秒数
+
+
+===================================================================================================
+
+创建表 基本语法
+
+CREATE TABLE database_name.table_name(
+    column1 datatype PRIMARY KEY(one or more columns),
+    column2 daattype,
+    column3 datatype,
+    ...
+    columnN datatype,
+)
+
+创建了一个 COMPANY 表，ID 作为主键，NOT NULL 的约束表示在表中创建纪录时这些字段不能为 NULL：
+CREATE TABLE IF NOT EXISTS COMPANY (
+    ID INT PRIMARY KEY      NOT NULL,
+    NAME            TEXT    NOT NULL,
+    AGE             INT     NOT NULL,
+    ADDRESS         CHAR(50),
+    SALARY          REAL
+);
+
+CREATE TABLE IF NOT EXISTS DEPARTMENT (
+    ID INT PRIMARY KEY      NOT NULL,
+    DEPT            CHAR(50)NOT NULL,
+    EMP_ID          INT     NOT NULL,
+);
+
+
+===================================================================================================
+
+删除表 基本语法
+
+DROP TABLE database_name.table_name;
+
+DROP TABLE COMPANY
+
+===================================================================================================
+
+插入操作 基本语法
+
+INSERT INTO TABLE_NAME [(column1, column2, column3, ... column)]
+VALUES (value1, value2, value3, ...valueN);
+
+INSERT INTO TABLE_NAME VALUES(value1, value2, value3, ... valueN);
+
+INSERT INTO COMPANY (ID, NAME, AGE, ADDRESS, SALARY)
+VALUES (1, 'Paul', 32, 'California', 20000.00)
+
+INSERT INTO COMPANY (ID, NAME, AGE, ADDRESS, SALARY)
+VALUES (2, 'Allen', 25, 'Texas', 150000.0)
+
+INSERT INTO COMPANY (ID, NAME, AGE, ADDRESS, SALARY)
+VALUES (3, 'Teddy', 23, 'Norway', 20000.00)
+
+INSERT INTO COMPANY (ID, NAME, AGE, ADDRESS, SALARY)
+VALUES (4, 'MARK', 25, 'Rich-Node', 560423.00)
+
+INSERT INTO COMPANY VALUES (7, 'James', 24, 'Houston', 10000.00 );
+
+INSERT INTO first_table_name [(column1, column2, ... columnN)]
+SELECT column1, column2, ...columnN
+FROM second_table_name
+[WHERE condition];
+
+
+===================================================================================================
+
+查询操作 基本语法
+
+SELECT column1, column2, columnN FROM TABLE_NAME;
+SELECT * FROM TABLE_NAME;
+
+SELECT ID, NAME, SALARY FROM COMPANY;
+
+
+===================================================================================================
+
+运算符 （算术， 比较， 逻辑运算， 位运算符）
+
+运算符     描述                                              实例
+==        检查连个操作数的值是否相等，如果相等则条件为真           (a == b) 不为真。
+=         检查连个操作数的值是否相等，如果相等则条件为真           (a = b) 不为真。
+!=        检查连个操作数的值是否相等，如果不相等则条件为真          (a != b) 为真。
+<>        检查两个操作数的值是否相等，如果不相等则条件为真。         (a <> b) 为真。
+>         检查左操作数的值是否大于右操作数的值，如果是则条件为真。      (a > b) 不为真。
+<         检查左操作数的值是否小于右操作数的值，如果是则条件为真。      (a < b) 为真。
+>=        检查左操作数的值是否大于等于右操作数的值，如果是则条件为真。    (a >= b) 不为真。
+<=        检查左操作数的值是否小于等于右操作数的值，如果是则条件为真。    (a <= b) 为真。
+!<        检查左操作数的值是否不小于右操作数的值，如果是则条件为真。     (a !< b) 为假。
+!>        检查左操作数的值是否不大于右操作数的值，如果是则条件为真。     (a !> b) 为真。
+
+
+运算符         描述
+AND             AND 运算符允许在一个 SQL 语句的 WHERE 子句中的多个条件的存在。
+BETWEEN         BETWEEN 运算符用于在给定最小值和最大值范围内的一系列值中搜索值。
+EXISTS          EXISTS 运算符用于在满足一定条件的指定表中搜索行的存在。
+IN              IN 运算符用于把某个值与一系列指定列表的值进行比较。
+NOT IN          IN 运算符的对立面，用于把某个值与不在一系列指定列表的值进行比较。
+LIKE            LIKE 运算符用于把某个值与使用通配符运算符的相似值进行比较。
+GLOB            GLOB 运算符用于把某个值与使用通配符运算符的相似值进行比较。GLOB 与 LIKE 不同之处在于，它是大小写敏感的。
+NOT             NOT 运算符是所用的逻辑运算符的对立面。比如 NOT EXISTS、NOT BETWEEN、NOT IN，等等。它是否定运算符。
+OR              OR 运算符用于结合一个 SQL 语句的 WHERE 子句中的多个条件。
+IS NULL         NULL 运算符用于把某个值与 NULL 值进行比较。
+IS              IS 运算符与 = 相似。
+IS NOT          IS NOT 运算符与 != 相似。
+||              连接两个不同的字符串，得到一个新的字符串。
+UNIQUE          UNIQUE 运算符搜索指定表中的每一行，确保唯一性（无重复）。
+
+
+SELECT * FROM COMPANY WHERE SALARY > 50000
+
+SELECT * FROM COMPANY WHERE SELARY = 20000
+
+SELECT * FROM COMPANY WHERE SALARY != 20000;
+SELECT * FROM COMPANY WHERE SALARY <> 20000
+
+
+===================================================================================================
+
+AND/OR 运算符
+
+SELECT column1, column2, columnN FROM TABLE_NAME WHERE [condition1] AND
+[condition2] ... AND [conditionN]
+
+SELECT * FROM COMPANY WHERE AGE >= 25 AND SALARY >= 65000;
+
+SELECT column1, column2, columnN
+FROM table_name
+WHERE [condition1] OR [condition2]...OR [conditionN]
+
+SELECT * FROM COMPANY WHERE AGE >= 25 OR SALARY >= 65000;
+
+===================================================================================================
+
+更新操作 基本语法
+
+UPDATE table_name SET column1 = value1, column2 = value2...., columnN = valueN
+WHERE [condition];
+
+UPDATE COMPANY SET ADDRESS = 'Texas' WHERE ID = 6;
+UPDATE COMPANY SET ADDRESS = 'Texas', SALARY = 20000.00;
+
+===================================================================================================
+
+删除操作 基本语法
+
+DELETE FROM table_name WHERE [condition];
+
+DELETE FROM COMPANY WHERE ID = 7;
+DELETE FROM COMPANY WHERE ID = 7;
+
+===================================================================================================
+
+LIKE
+
+SQLite 的 LIKE 运算符是用来匹配通配符指定模式的文本值。如果搜索表达式与模式表达式匹配，LIKE
+运算符将返回真（true），也就是 1。这里有两个通配符与 LIKE 运算符一起使用：
+•   百分号 （%）
+•   下划线 （_）
+百分号（%）代表零个、一个或多个数字或字符。下划线（_）代表一个单一的数字或字符。这些符号可以被组合使用。
+
+SELECT column_list
+FROM table_name
+WHERE column LIKE 'XXXX%'
+
+SELECT column_list
+FROM table_name
+WHERE column LIKE '%XXXX%'
+
+SELECT column_list
+FROM table_name
+WHERE column LIKE 'XXXX_'
+
+===================================================================================================
+
+Glob
+
+SQLite 的 GLOB 运算符是用来匹配通配符指定模式的文本值。如果搜索表达式与模式表达式匹配，
+GLOB 运算符将返回真（true），也就是 1。与 LIKE 运算符不同的是，GLOB 是大小写敏感的，
+对于下面的通配符，它遵循 UNIX 的语法。
+•   星号 （*）
+•   问号 （?）
+星号（*）代表零个、一个或多个数字或字符。问号（?）代表一个单一的数字或字符。这些符号可以被组合使用。
+
+SELECT FROM table_name
+WHERE column GLOB 'XXXX*'
+
+SELECT FROM table_name
+WHERE column GLOB '*XXXX*'
+
+SELECT FROM table_name
+WHERE column GLOB 'XXXX?'
+
+SELECT * FROM COMPANY WHERE AGE  GLOB '2*';
+SELECT * FROM COMPANY WHERE ADDRESS  GLOB '*-*';
+
+===================================================================================================
+
+Limit
+
+SQLite 的 LIMIT 子句用于限制由 SELECT 语句返回的数据数量
+
+SELECT column1, column2, columnN
+FROM table_name
+LIMIT [no of rows]
+
+SELECT column1, column2, columnN
+FROM table_name
+LIMIT [no of rows] OFFSET [row num]
+
+SELECT * FROM COMPANY LIMIT 6;
+SELECT * FROM COMPANY LIMIT 3 OFFSET 2;
+
+===================================================================================================
+
+Order By
+
+SQLite 的 ORDER BY 子句是用来基于一个或多个列按升序或降序顺序排列数据。
+SELECT column-list
+FROM table_name
+[WHERE condition]
+[ORDER BY column1, column2, .. columnN] [ASC | DESC];
+
+SELECT * FROM COMPANY ORDER BY SALARY ASC;
+SELECT * FROM COMPANY ORDER BY NAME, SALARY ASC;
+SELECT * FROM COMPANY ORDER BY NAME DESC;
+
+===================================================================================================
+
+Group By
+
+SQLite 的 GROUP BY 子句用于与 SELECT 语句一起使用，来对相同的数据进行分组。
+在 SELECT 语句中，GROUP BY 子句放在 WHERE 子句之后，放在 ORDER BY 子句之前。
+
+SELECT column-list
+FROM table_name
+WHERE [ conditions ]
+GROUP BY column1, column2....columnN
+ORDER BY column1, column2....columnN
+
+SELECT NAME, SUM(SALARY) FROM COMPANY GROUP BY NAME;
+SELECT NAME, SUM(SALARY) FROM COMPANY GROUP BY NAME ORDER BY NAME
+SELECT NAME, SUM(SALARY) FROM COMPANY GROUP BY NAME ORDER BY NAME DESC
+
+===================================================================================================
+
+Having
+
+HAVING 子句允许指定条件来过滤将出现在最终结果中的分组结果。
+WHERE 子句在所选列上设置条件，而 HAVING 子句则在由 GROUP BY 子句创建的分组上设置条件。
+
+SELECT
+FROM
+WHERE
+GROUP BY
+HAVING
+ORDER BY
+
+在一个查询中，HAVING 子句必须放在 GROUP BY 子句之后，必须放在 ORDER BY 子句之前。
+下面是包含 HAVING 子句的 SELECT 语句的语法：
+SELECT column1, column2 FROM table1, table2
+WHERE[conditions] GROUP BY column1, column2
+HAVING [conditions] ORDER BY column1, column2
+
+===================================================================================================
+
+Distinct
+
+SQLite 的 DISTINCT 关键字与 SELECT 语句一起使用，来消除所有重复的记录，
+并只获取唯一一次记录。有可能出现一种情况，在一个表中有多个重复的记录。
+当提取这样的记录时，DISTINCT 关键字就显得特别有意义，它只获取唯一一次记录，而不是获取重复记录。
+
+SELECT DISTINCT column1, column2, ... columnN FROM table_name
+WHERE [condition]
+
+SELECT DISTINCT name FROM COMPANY;
+
+===================================================================================================
+
+
+
 
 
 

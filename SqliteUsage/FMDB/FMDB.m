@@ -7,7 +7,7 @@
 //
 
 /**
- 1.数据库文件存在在哪
+ 1.数据库文件存在在哪    项目沙盒目录
  2.何时创建数据库文件
  3.如何设计表
  4.获取的网络数据如何存在到数据库
@@ -46,14 +46,7 @@
 
 - (void)fetchData {
 
-    FMDatabase *database = [[FMDatabase alloc] initWithPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingString:@"/sm.db"]];
-    [database open];
-    FMResultSet *resultSet = [database executeQuery:@"SELECT * FROM CARS"];
-    while ([resultSet next]) {
-        NSLog(@"%@", [resultSet stringForColumn:@"COLOR"]);
-    }
-
-    FMDatabasePool *databasePool = [FMDatabasePool alloc] init;
+    
 }
 
 

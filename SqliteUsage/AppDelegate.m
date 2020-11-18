@@ -32,46 +32,26 @@
 
 - (void)createDB {
     
-    if (![self.database isOpen]) {
-        BOOL result = [self.database open];
-        NSLog(@"数据库打开 %@",result == YES ? @"成功" : @"失败");
-    }
-    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingString:@"/sm.db"];
-    self.database = [FMDatabase databaseWithPath:path];
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingString:@"/asd.db"];
+    FMDatabase *database = [FMDatabase databaseWithPath:path];
+    [database open];
     
-    [self.database open];
-    BOOL create = [self.database executeUpdate:@"CREATE TABLE IF NOT EXISTS CARS(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, COLOR TEXT)"];
-    if (create == YES) {
-        NSLog(@"创建数据库成功！");
-    }else {
-        NSLog(@"创建数据库失败");
-    }
-    [self.database close];
+    BOOL create = [database executeUpdate:@"CREATE TABLE IF NOT EXISTS KILL(ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, NAME TEXT NOT NULL, CAR TEXT NOT NULL)"];
+    NSLog(@"创建表 %@",create == YES ? @"成功" : @"失败");
     
-    [self.database open];
-    BOOL insert = [self.database executeUpdate:@"INSERT INTO CARS(ID, NAME, COLOR) VALUES(2, 'ROBO', 'colorful')"];
-    NSLog(@"数据库插入 %@", insert == YES ? @"成功" : @"失败");
-    [self.database close];
+    BOOL insert = [database executeUpdate:@"INSERT INTO KILL(ID, NAME, CAR) VALUES(0, 'sd', 'beach')"];
+    NSLog(@"插入数据 %@",insert == YES ? @"成功" : @"失败");
     
-    [self.database open];
-    FMResultSet *resultSet = [self.database executeQuery:@"SELECT * FROM CARS where ID = 1"];
-    while ([resultSet next]) {
-        NSLog(@"%@",[resultSet stringForColumn:@"NAME"]);
-    }
+    BOOL select = [database executeQuery:@"SELECT NAME FROM KILL WHERE ID = 0 or CAR "];
+    NSLog(@"查询数据 %@",select == YES ? @"成功" : @"失败");
 
-    [self.database close];
-    
-    [self.database open];
-    BOOL update = [self.database executeUpdate:@"UPDATE CARS SET NAME = 'Bee' WHERE ID = 0"];
-    NSLog(@"数据库更新 %@", update == YES ? @"成功" : @"失败");
-    [self.database close];
-    
-//    [self.database open];
-//    BOOL delete = [self.database executeUpdate:@"DELETE FROM CARS WHERE ID = 0"];
-//    NSLog(@"数据库删除 %@", delete == YES ? @"成功" : @"失败");
-//    [self.database close];
-    
-    
+    BOOL update = [database executeUpdate:@"UPDATE KILL SET NAME = 'showmaker' WHERE ID = 0"];
+    NSLog(@"更新数据 %@",update == YES ? @"成功" : @"失败");
+
+    BOOL delete = [database executeUpdate:@"DELETE FROM KILL WHERE ID = 0"];
+    NSLog(@"更新数据 %@",delete == YES ? @"成功" : @"失败");
+
+    [database close];
 }
 
 
