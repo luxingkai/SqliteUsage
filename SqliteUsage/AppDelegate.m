@@ -32,26 +32,34 @@
 
 - (void)createDB {
     
-    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingString:@"/asd.db"];
+    /**/
+//    FMDatabase
+//    FMResultSet
+//    FMDatabaseQueue
+    
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingString:@"/color.db"];
     FMDatabase *database = [FMDatabase databaseWithPath:path];
+    NSLog(@"数据库对象创建 %@", database ? @"成功" : @"失败");
+    
     [database open];
+    BOOL create =  [database executeUpdate:@"CREATE TABLE IF NOT EXISTS CAR(ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, NAME TEXT, COLOR TEXT NOT NULL)"];
+    NSLog(@"创建表 %@",create ? @"成功" : @"失败");
     
-    BOOL create = [database executeUpdate:@"CREATE TABLE IF NOT EXISTS KILL(ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, NAME TEXT NOT NULL, CAR TEXT NOT NULL)"];
-    NSLog(@"创建表 %@",create == YES ? @"成功" : @"失败");
+    BOOL insert = [database executeUpdate:@"INSERT INTO CAR(ID, NAME, COLOR) VALUES(0, 'sdfa', 'yellow')"];
+    NSLog(@"数据插入 %@",insert ? @"成功" : @"失败");
     
-    BOOL insert = [database executeUpdate:@"INSERT INTO KILL(ID, NAME, CAR) VALUES(0, 'sd', 'beach')"];
-    NSLog(@"插入数据 %@",insert == YES ? @"成功" : @"失败");
+    FMResultSet *result = [database executeQuery:@"SELECT NAME FROM CAR WHERE ID = 0"];
+    NSLog(@"数据查询 %@",result ? @"成功" : @"失败");
     
-    BOOL select = [database executeQuery:@"SELECT NAME FROM KILL WHERE ID = 0 or CAR "];
-    NSLog(@"查询数据 %@",select == YES ? @"成功" : @"失败");
+    BOOL update = [database executeUpdate:@"UPDATE CAR SET NAME = 'ollll' WHERE ID = 0"];
+    NSLog(@"数据修改 %@",update ? @"成功" : @"失败");
 
-    BOOL update = [database executeUpdate:@"UPDATE KILL SET NAME = 'showmaker' WHERE ID = 0"];
-    NSLog(@"更新数据 %@",update == YES ? @"成功" : @"失败");
-
-    BOOL delete = [database executeUpdate:@"DELETE FROM KILL WHERE ID = 0"];
-    NSLog(@"更新数据 %@",delete == YES ? @"成功" : @"失败");
+    BOOL delete = [database executeStatements:@"DELETE FROM CAR WHERE ID = 0"];
+    NSLog(@"数据删除 %@",delete ? @"成功" : @"失败");
 
     [database close];
+    
+    
 }
 
 
