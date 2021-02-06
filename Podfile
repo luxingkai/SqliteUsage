@@ -6,6 +6,7 @@ target 'SqliteUsage' do
   use_frameworks!
 
   pod 'FMDB'
+  pod 'AFNetworking'
   
   # Pods for SqliteUsage
 

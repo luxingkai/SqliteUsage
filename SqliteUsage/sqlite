@@ -54,6 +54,7 @@ SQLite 没有单独的Boolean存储类。相反，布尔值被存储为整数0�
 Date 与 Time数据类型
 SQLite 没有一个单独的用于存储日期或时间的存储类，但SQLite能够把日期和时间存储为TEXT，
 REAL或INTEGER值。
+
 存储类型                            日期格式
 TEXT                                格式为YYYY-MM-DD HH:MM:SS.SSS
 REAL                                从公元前4714年11月24日格林尼治时间的正午开始算起的天数
@@ -66,7 +67,7 @@ INTEGER                             从1970-01-01 00:00:00 UTC算起的秒数
 
 CREATE TABLE database_name.table_name(
     column1 datatype PRIMARY KEY(one or more columns),
-    column2 daattype,
+    column2 datatype,
     column3 datatype,
     ...
     columnN datatype,
@@ -97,6 +98,7 @@ DROP TABLE database_name.table_name;
 DROP TABLE COMPANY
 
 ===================================================================================================
+
 
 插入操作 基本语法
 
@@ -273,6 +275,8 @@ LIMIT [no of rows] OFFSET [row num]
 SELECT * FROM COMPANY LIMIT 6;
 SELECT * FROM COMPANY LIMIT 3 OFFSET 2;
 
+SELECT NAME, AGE FROM PEOPLE WHERE ID > 10 LIMIT 10
+
 ===================================================================================================
 
 Order By
@@ -338,6 +342,13 @@ WHERE [condition]
 SELECT DISTINCT name FROM COMPANY;
 
 ===================================================================================================
+
+
+
+
+
+
+
 
 
 

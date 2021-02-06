@@ -12,6 +12,9 @@
 		1107EC45255BB309002A6A85 /* FMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 1107EC44255BB309002A6A85 /* FMDB.m */; };
 		1107EC48255BB317002A6A85 /* Realm.m in Sources */ = {isa = PBXBuildFile; fileRef = 1107EC47255BB317002A6A85 /* Realm.m */; };
 		1107EC4B255BB322002A6A85 /* CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1107EC4A255BB322002A6A85 /* CoreData.m */; };
+		1148E5862567536D0002372F /* NetworkHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 1148E5852567536D0002372F /* NetworkHandler.m */; };
+		1148E58925675B220002372F /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1148E58825675B220002372F /* CollectionViewController.m */; };
+		11508DBA25A6A6AF005DBB5D /* An Introduction To The SQLite C:C++ Interface.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 11508DB925A6A6AF005DBB5D /* An Introduction To The SQLite C:C++ Interface.pdf */; };
 		118043B4255D173D002E2582 /* FMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 118043B3255D173D002E2582 /* FMModel.m */; };
 		118327192423212400B559FB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 118327182423212400B559FB /* AppDelegate.m */; };
 		118327222423212400B559FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 118327202423212400B559FB /* Main.storyboard */; };
@@ -53,6 +56,11 @@
 		1107EC47255BB317002A6A85 /* Realm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Realm.m; sourceTree = "<group>"; };
 		1107EC49255BB322002A6A85 /* CoreData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreData.h; sourceTree = "<group>"; };
 		1107EC4A255BB322002A6A85 /* CoreData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreData.m; sourceTree = "<group>"; };
+		1148E5842567536D0002372F /* NetworkHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkHandler.h; sourceTree = "<group>"; };
+		1148E5852567536D0002372F /* NetworkHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkHandler.m; sourceTree = "<group>"; };
+		1148E58725675B220002372F /* CollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		1148E58825675B220002372F /* CollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		11508DB925A6A6AF005DBB5D /* An Introduction To The SQLite C:C++ Interface.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "An Introduction To The SQLite C:C++ Interface.pdf"; sourceTree = "<group>"; };
 		118043B2255D173D002E2582 /* FMModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMModel.h; sourceTree = "<group>"; };
 		118043B3255D173D002E2582 /* FMModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMModel.m; sourceTree = "<group>"; };
 		118327142423212400B559FB /* SqliteUsage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SqliteUsage.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +131,8 @@
 				1107EC44255BB309002A6A85 /* FMDB.m */,
 				118043B2255D173D002E2582 /* FMModel.h */,
 				118043B3255D173D002E2582 /* FMModel.m */,
+				1148E58725675B220002372F /* CollectionViewController.h */,
+				1148E58825675B220002372F /* CollectionViewController.m */,
 			);
 			path = FMDB;
 			sourceTree = "<group>";
@@ -143,6 +153,15 @@
 				1107EC4A255BB322002A6A85 /* CoreData.m */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		1148E583256753330002372F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				1148E5842567536D0002372F /* NetworkHandler.h */,
+				1148E5852567536D0002372F /* NetworkHandler.m */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		1183270B2423212400B559FB = {
@@ -170,6 +189,7 @@
 		118327162423212400B559FB /* SqliteUsage */ = {
 			isa = PBXGroup;
 			children = (
+				1148E583256753330002372F /* Network */,
 				1107EC3F255BB2C4002A6A85 /* CoreData */,
 				1107EC3E255BB2B5002A6A85 /* Realm */,
 				1107EC3D255BB2AF002A6A85 /* FMDB */,
@@ -179,6 +199,7 @@
 				118327202423212400B559FB /* Main.storyboard */,
 				118327232423212700B559FB /* Assets.xcassets */,
 				118327252423212700B559FB /* LaunchScreen.storyboard */,
+				11508DB925A6A6AF005DBB5D /* An Introduction To The SQLite C:C++ Interface.pdf */,
 				118327282423212700B559FB /* Info.plist */,
 				118327292423212700B559FB /* main.m */,
 				1107EC3A255BB0D7002A6A85 /* sqlite */,
@@ -336,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				118327272423212700B559FB /* LaunchScreen.storyboard in Resources */,
+				11508DBA25A6A6AF005DBB5D /* An Introduction To The SQLite C:C++ Interface.pdf in Resources */,
 				118327242423212700B559FB /* Assets.xcassets in Resources */,
 				118327222423212400B559FB /* Main.storyboard in Resources */,
 				1107EC3B255BB0D7002A6A85 /* sqlite in Resources */,
@@ -469,10 +491,12 @@
 				118327192423212400B559FB /* AppDelegate.m in Sources */,
 				1183272A2423212700B559FB /* main.m in Sources */,
 				1107EC4B255BB322002A6A85 /* CoreData.m in Sources */,
+				1148E5862567536D0002372F /* NetworkHandler.m in Sources */,
 				1107EC48255BB317002A6A85 /* Realm.m in Sources */,
 				1107EC45255BB309002A6A85 /* FMDB.m in Sources */,
 				1107EC42255BB2F7002A6A85 /* Sqlite3.m in Sources */,
 				118043B4255D173D002E2582 /* FMModel.m in Sources */,
+				1148E58925675B220002372F /* CollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

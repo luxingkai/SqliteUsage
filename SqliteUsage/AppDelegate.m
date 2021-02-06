@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "CollectionViewController.h"
 
 @interface AppDelegate ()
 @end
@@ -19,7 +19,17 @@
     // Override point for customization after application launch.
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    FMDB *vc = [FMDB new];
+    CGFloat itemWidth = ([UIScreen mainScreen].bounds.size.width - 60) / 3;
+    CGFloat itemHeight = 260;
+    
+//    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+//    layout.itemSize = CGSizeMake(itemWidth, itemHeight);
+//    layout.minimumLineSpacing = 15;
+//    layout.minimumInteritemSpacing = 15;
+//    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+//    CollectionViewController *vc = [[CollectionViewController alloc] initWithCollectionViewLayout:layout];
+    
+    Sqlite3 *vc = [Sqlite3 new];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
@@ -33,32 +43,34 @@
 - (void)createDB {
     
     /**/
-//    FMDatabase
-//    FMResultSet
-//    FMDatabaseQueue
+    //    FMDatabase
+    //    FMResultSet
+    //    FMDatabaseQueue
     
-    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingString:@"/color.db"];
-    FMDatabase *database = [FMDatabase databaseWithPath:path];
-    NSLog(@"数据库对象创建 %@", database ? @"成功" : @"失败");
+    NSString *path= [NSTemporaryDirectory() stringByAppendingString:@"my.db"];
+    FMDatabase *db = [FMDatabase databaseWithPath:path];
+    NSLog(@"创建数据库 %@", db ? @"成功" : @"失败");
     
-    [database open];
-    BOOL create =  [database executeUpdate:@"CREATE TABLE IF NOT EXISTS CAR(ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, NAME TEXT, COLOR TEXT NOT NULL)"];
-    NSLog(@"创建表 %@",create ? @"成功" : @"失败");
+    [db open];
     
-    BOOL insert = [database executeUpdate:@"INSERT INTO CAR(ID, NAME, COLOR) VALUES(0, 'sdfa', 'yellow')"];
-    NSLog(@"数据插入 %@",insert ? @"成功" : @"失败");
-    
-    FMResultSet *result = [database executeQuery:@"SELECT NAME FROM CAR WHERE ID = 0"];
-    NSLog(@"数据查询 %@",result ? @"成功" : @"失败");
-    
-    BOOL update = [database executeUpdate:@"UPDATE CAR SET NAME = 'ollll' WHERE ID = 0"];
-    NSLog(@"数据修改 %@",update ? @"成功" : @"失败");
+    BOOL create = [db executeStatements:@"CREATE TABLE IF NOT EXISTS PEOPLE(ID INTEGER PRIMARY KEY NOT NULL, NAME TEXT NOT NULL)"];
+    NSLog(@"创建表 %@", create ? @"成功" : @"失败");
 
-    BOOL delete = [database executeStatements:@"DELETE FROM CAR WHERE ID = 0"];
-    NSLog(@"数据删除 %@",delete ? @"成功" : @"失败");
+    BOOL insert = [db executeStatements:@"INSERT INTO PEOPLE(ID, NAME) VALUES(0, 'fasd')"];
+    NSLog(@"插入表 %@", insert ? @"成功" : @"失败");
 
-    [database close];
+    BOOL update = [db executeStatements:@"UPDATE PEOPLE SET NAME = 'bane' WHERE ID = 0"];
+    NSLog(@"更新表 %@", update ? @"成功" : @"失败");
+
+    FMResultSet *resultSet = [db executeQuery:@"SELECT NAME FROM PEOPLE WHERE ID > 1 AND NAME LIKE 'Sd_' LIMIT 5"];
+    NSLog(@"查询表 %@", resultSet != nil ? @"成功" : @"失败");
     
+    BOOL delete = [db executeStatements:@"DELETE FROM PEOPLE WHERE ID = 0"];
+    NSLog(@"删除 %@", delete ? @"成功" : @"失败");
+
+    BOOL drop = [db executeStatements:@"DROP TABLE PEOPLE"];
+    
+    [db close];
     
 }
 
